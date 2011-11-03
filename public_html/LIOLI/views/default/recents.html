@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<UL>
+{{for row in rows:}}
+    <li>{{=row.unique_id}}
+        <br>
+        {{=row.body}}
+        <br>
+        Age: {{=row.age}} Gender: {{=row.gender}}
+        <!--TODO add buttons and voting -->
+    </li>
+    <br>
+    <br>
+    {{pass}}
+</UL>

@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+
+<br>
+Age: {{=row.age}} Gender: {{=row.gender}}
+<br>
+{{=row.unique_id}}
+<br>
+{{=row.body}}
+<br>
+Loves: {{=row.loves}} Leaves: {{=row.leaves}}

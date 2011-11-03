@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+
+
+
+<h1>
+{{=message}}
+</h1>
+<UL>
+{{for row in rows:}}
+    <li>{{=A(row.unique_id, _href=URL('specific_entry', args=row.unique_id))}}
+        <br>
+        {{=row.body}}
+        <br>
+        Age: {{=row.age}} Gender: {{=row.gender}}
+    </li>
+    <br>
+    <br>
+    {{pass}}
+</UL>

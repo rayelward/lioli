@@ -1,0 +1,88 @@
+(dp1
+S'body'
+p2
+(dp3
+S'type'
+p4
+S'text'
+p5
+sS'sortable'
+p6
+I3
+sS'sql'
+p7
+S'TEXT NOT NULL'
+p8
+ssS'gender'
+p9
+(dp10
+g4
+S'string'
+p11
+sg6
+I7
+sg7
+S'CHAR(512) NOT NULL'
+p12
+ssS'age'
+p13
+(dp14
+g4
+S'integer'
+p15
+sg6
+I6
+sg7
+S'INTEGER NOT NULL'
+p16
+ssS'id'
+p17
+(dp18
+g4
+g17
+sg6
+I1
+sg7
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p19
+ssS'loves'
+p20
+(dp21
+g4
+g15
+sg6
+I4
+sg7
+S'INTEGER NOT NULL'
+p22
+ssS'accepted'
+p23
+(dp24
+g4
+g15
+sg6
+I8
+sg7
+S'INTEGER NOT NULL'
+p25
+ssS'leaves'
+p26
+(dp27
+g4
+g15
+sg6
+I5
+sg7
+S'INTEGER NOT NULL'
+p28
+ssS'unique_id'
+p29
+(dp30
+g4
+g15
+sg6
+I2
+sg7
+S'INTEGER NOT NULL'
+p31
+ss.

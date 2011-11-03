@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+<br/>
+Age: {{=row.age}} Gender: {{=row.gender}}
+<br/>
+<br/>
+{{=row.unique_id}}
+<br/>
+{{=row.body}}
+<br/>
+
+<br/>
+<strong>
+{{=A("reject", _href=URL('moderation', 'delete_entry', args=row.unique_id))}}
+{{=BR()}}
+{{=BR()}}
+{{=A("accept", _href=URL('moderation', 'accept_entry', args=row.unique_id))}}
+</strong>
