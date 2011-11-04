@@ -1,4 +1,6 @@
 {{extend 'layout.html'}}
+
+{{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}} 
 <br/>
 Age: {{=row.age}} Gender: {{=row.gender}}
 <br/>
