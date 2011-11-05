@@ -1,10 +1,14 @@
 {{extend 'layout.html'}}
 
 
-
+{{try:}}{{=auth.navbar(action=URL('moderation','user'))}}{{except:pass}} 
 <h1>
-{{=message}}
+Welcome to the moderation section
 </h1>
+
+{{if row_count == 0:}}
+    <h3>Nothing to moderate today</h3>
+    {{pass}}
 <UL>
 {{for row in rows:}}
     <li>{{=A(row.unique_id, _href=URL('specific_entry', args=row.unique_id))}}

@@ -85,7 +85,8 @@
     <div id="container">                        
       
       <div id="wrapper">        
-      {{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}}
+      <!--{{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}} 
+          This section taken out because their is no users unless in moderation channel-->
     
     <div id="header"> <!-- header and login nav -->
       {{block header}} <!-- this is default header -->

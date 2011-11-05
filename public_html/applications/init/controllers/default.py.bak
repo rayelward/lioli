@@ -15,7 +15,6 @@ def index():
     redirect(URL('recents'))
     return dict()
 #TODO: allow voting
-#add pagination
 def recents():
     page = request.args(0) or 0
     page_min = int(page) * 10
