@@ -16,7 +16,7 @@ def index():
     redirect(URL('moderation','new_entries'))
     return dict()
     
-#TODO show new entries to be allowed in or deleted from the database.
+#show new entries to be allowed in or deleted from the database.
 @auth.requires_membership(role='moderation')
 def new_entries():
     
@@ -27,7 +27,7 @@ def new_entries():
     row_count = db(where_clause).count()
     return dict(rows=rows, row_count=row_count)
     
-#TODO takes a specific entry asks for a confirmation to delete or accept, 
+#takes a specific entry asks for a confirmation to delete or accept, 
 #then updates database, then redirects to new_entries.
 @auth.requires_membership(role='moderation')
 def specific_entry():
