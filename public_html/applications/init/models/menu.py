@@ -6,7 +6,7 @@
 #########################################################################
 
 response.title = 'LIOLI'
-response.subtitle = 'Love it or Leave it'
+response.subtitle = 'love it or leave it'
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
 response.meta.author = 'Raymond Elward <feedback.lioli@gmail.com'
@@ -23,7 +23,7 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu = [
-    (T('Recents'), False, URL('default','recents'), []),
+    (T('Recents'), False, URL('default','recents/0'), []),
     (T('Random'),False, URL('default','random'), []),
     (T('Search'),False, URL('default','search'), []),
     (T('Submit'),False, URL('default','submit'), []),

@@ -27,7 +27,7 @@ def recents(page=0):
     where_clause = (db.lioli_main.accepted == 1)
     fields = [db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
     rows = db(where_clause).select(limitby=(page_min, page_max), orderby=~db.lioli_main.id, *fields).as_list()
-    return dict(rows=rows)
+    return rows
     
 #function to return 1 random object
 #IN:n/a
@@ -37,7 +37,7 @@ def random_ten():
     where_clause = (db.lioli_main.accepted == 1)
     fields = [db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
     rows = db(where_clause).select(limitby=(0, 10), orderby='<random>', *fields).as_list()
-    return dict(rows=rows)
+    return rows
 
 #function that recieves a POST or GET request with an object to add to the database
 #IN:a body, age and gender for submission.
@@ -61,7 +61,7 @@ def add_loves(u_id):
     
 #function that adds 1 to leaves for an entry
 #IN:unique_id
-#OUT: n/a
+#OUT: new leave count
 @service.json
 def add_leaves(u_id):
     where_clause = (db.lioli_main.unique_id == u_id)
@@ -69,7 +69,7 @@ def add_leaves(u_id):
     if row == None:
         return dict(wrongid='wrongid')
     row.update_record(leaves=(row.leaves+1))
-    return dict(accepted='accepted')
+    return dict(newleaves=row.leaves)
     
 #shows all the information for an entry
 #IN:unique_id
@@ -81,4 +81,4 @@ def get_entry(u_id):
     row = db(where_clause).select(*fields).first()
     if row == None:
         return dict(wrongid='wrongid')
-    return dict(story=row)
+    return row

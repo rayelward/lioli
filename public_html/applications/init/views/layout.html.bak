@@ -85,13 +85,14 @@
     <div id="container">                        
       
       <div id="wrapper">        
-      {{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}}
+      <!--{{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}} 
+          This section taken out because their is no users unless in moderation channel-->
     
     <div id="header"> <!-- header and login nav -->
       {{block header}} <!-- this is default header -->
       
       <h1>
-        <span id="appname">{{=request.application.capitalize()}}</span>App
+        <span id="appname">{{=response.title}}</span>App
       </h1>
       <div style="clear: both;"></div><!-- Clear the divs -->
       {{end}}

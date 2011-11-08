@@ -1,14 +1,46 @@
 {{extend 'layout.html'}}
 <UL>
+
+
+        <form ><input type="hidden" name="id" id="id" value="" /></form>
 {{for row in rows:}}
     <li>{{=row.unique_id}}
         <br>
         {{=row.body}}
         <br>
         Age: {{=row.age}} Gender: {{=row.gender}}
-        <!--TODO add buttons and voting -->
+        <br/>
+        
+        <span id="love_answer{{=row.id}}" style="display: none">Loves: <span id="love_row{{=row.id}}"> {{=row.loves}}</span></span>
+        <span id="love_button{{=row.id}}">
+        <button onclick="jQuery('#id').val('{{=row.id}}');
+                ajax('add_loves', ['id'], 'love_row{{=row.id}}');
+                jQuery('#love_button{{=row.id}}').hide();
+                jQuery('#love_answer{{=row.id}}').show();
+                jQuery('#leave_button{{=row.id}}').hide();
+                jQuery('#leave_answer{{=row.id}}').show();
+                ">Love it</button></span>
+                
+        <span id="leave_answer{{=row.id}}" style="display: none">Leaves: <span id="leave_row{{=row.id}}"> {{=row.leaves}}</span></span>
+        <span id="leave_button{{=row.id}}">
+        <button onclick="jQuery('#id').val('{{=row.id}}');
+                ajax('add_leaves', ['id'], 'leave_row{{=row.id}}');
+                jQuery('#love_button{{=row.id}}').hide();
+                jQuery('#love_answer{{=row.id}}').show();
+                jQuery('#leave_button{{=row.id}}').hide();
+                jQuery('#leave_answer{{=row.id}}').show();
+                ">Leave it</button></span>
     </li>
     <br>
     <br>
     {{pass}}
 </UL>
+
+<!--NEED TO ADD PAGINATION -->
+{{if page:}}
+<a href="{{=URL(args=[page-1])}}">previous</a>
+{{pass}}
+
+{{if rows >= items_per_page:}}
+<a href="{{=URL(args=[page+1])}}">next</a>
+{{pass}}

@@ -14,20 +14,21 @@
 def index():
     redirect(URL('recents'))
     return dict()
-#TODO: allow voting
+    
+fields = [db.lioli_main.id, db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
+#Shows 10 submissions for a user to vote on.
 def recents():
     page = request.args(0) or 0
-    page_min = int(page) * 10
-    page_max = page_min + 10
+    items_per_page = 10
+    page_min = int(page) * items_per_page
+    page_max = page_min + items_per_page
     where_clause = (db.lioli_main.accepted == 1)
-    fields = [db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
     rows = db(where_clause).select(limitby=(page_min, page_max), orderby=~db.lioli_main.id, *fields)
-    return dict(rows=rows)
+    return dict(rows=rows, page=int(page), items_per_page=items_per_page)
     
-#TODO: allow voting
+#Shows a random set of 10 submissions for a user to vote on.
 def random():
     where_clause = (db.lioli_main.accepted == 1)
-    fields = [db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
     rows = db(where_clause).select(limitby=(0, 10), orderby='<random>', *fields)
     return dict(rows=rows)
 
@@ -72,41 +73,24 @@ def bg_find():
 
 
 
+##functions for voting::
 
-##def download():
-    """
-    allows downloading of uploaded files
-    http://..../[app]/default/download/[filename]
-    """
-##    return response.download(request,db)
-
-
-##def call():
-    """
-    exposes services. for example:
-    http://..../[app]/default/call/jsonrpc
-    decorate with @services.jsonrpc the functions to expose
-    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
-    """
-##    return service()
+##called by AJAX used for voting up by one 
+def add_loves():
+    row = db(db.lioli_main.id == request.vars.id).select().first()
+    new_loves = row.loves + 1
+    row.update_record(loves=new_loves)
+    return str(new_loves)
+    
+##called by AJAX used for voting up by one
+def add_leaves():
+    row = db.lioli_main[request.vars.id]
+    new_leaves = row.leaves + 1
+    row.update_record(leaves=new_leaves)
+    return str(new_leaves)
 
 
-##@auth.requires_signature()
-##def data():
-    """
-    http://..../[app]/default/data/tables
-    http://..../[app]/default/data/create/[table]
-    http://..../[app]/default/data/read/[table]/[id]
-    http://..../[app]/default/data/update/[table]/[id]
-    http://..../[app]/default/data/delete/[table]/[id]
-    http://..../[app]/default/data/select/[table]
-    http://..../[app]/default/data/search/[table]
-    but URLs bust be signed, i.e. linked with
-      A('table',_href=URL('data/tables',user_signature=True))
-    or with the signed load operator
-      LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
-    """
-##    return dict(form=crud())
+
 
 
 def user():
