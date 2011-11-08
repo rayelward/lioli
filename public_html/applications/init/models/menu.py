@@ -23,7 +23,7 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu = [
-    (T('Recents'), False, URL('default','index'), []),
+    (T('Recents'), False, URL('default','recents'), []),
     (T('Random'),False, URL('default','random'), []),
     (T('Search'),False, URL('default','search'), []),
     (T('Submit'),False, URL('default','submit'), []),
