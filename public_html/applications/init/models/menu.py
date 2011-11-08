@@ -5,15 +5,15 @@
 ## Customize your APP title, subtitle and menus here
 #########################################################################
 
-response.title = request.application
-response.subtitle = T('customize me!')
+response.title = 'LIOLI'
+response.subtitle = 'Love it or Leave it'
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
-response.meta.author = 'Your Name <you@example.com>'
-response.meta.description = 'a cool new app'
-response.meta.keywords = 'web2py, python, framework'
+response.meta.author = 'Raymond Elward <feedback.lioli@gmail.com'
+response.meta.description = 'Love it or Leave it'
+response.meta.keywords = 'leave, love, entertainment, love it, leave it, love it or leave it, fun, iOS, heart, relationship, relationships'
 response.meta.generator = 'Web2py Web Framework'
-response.meta.copyright = 'Copyright 2011'
+response.meta.copyright = 'Copyright 2012'
 
 ## your http://google.com/analytics id
 response.google_analytics_id = None
