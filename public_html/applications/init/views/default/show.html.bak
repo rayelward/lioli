@@ -1,10 +1,16 @@
 {{extend 'layout.html'}}
-
+<link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
 <br>
 Age: {{=row.age}} Gender: {{=row.gender}}
 <br>
+<br>
+<span class="u_id">
 {{=row.unique_id}}
+</span>
 <br>
+<span class="body">
 {{=row.body}}
+</body>
 <br>
-Loves: {{=row.loves}} Leaves: {{=row.leaves}}
+<br>
+<span class="love_answer">Loves: {{=row.loves}}</span> <span class="leave_answer">Leaves: {{=row.leaves}}</span>

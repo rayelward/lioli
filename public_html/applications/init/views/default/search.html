@@ -1,11 +1,13 @@
 {{extend 'layout.html'}}
 
-<h1 class="search">Search Entries by ID or keyword<h1>
+<link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
+<h3 class="search">Search Entries by ID or keyword<h3>
 
 <br />
 
 {{=form}}
 <br />
 <br />
-
+<div class="search_results">
 {{=target_div}}
+</div>

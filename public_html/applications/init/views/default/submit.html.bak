@@ -1,5 +1,7 @@
 {{extend 'layout.html'}}
-<h1>{{=message}}</h1>
-{{=BEAUTIFY(response._vars)}}
+
+
+<link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
+<h3>{{=message}}</h13>
 
 {{=form}}

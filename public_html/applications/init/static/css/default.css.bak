@@ -1,0 +1,44 @@
+div{
+    backgroud: black;
+    }
+body {
+    background: black;
+    }
+ul li {
+list-style-image: none;
+list-style-type: none;
+}
+
+button.vote_button {
+    height : 39px;
+    width : 85px;
+    border-style:none;
+    border-padding: none;
+}
+.body {
+    font-size: 1.4em;
+    color: white;
+}
+.age_gender {
+    color: grey;
+}
+.u_id {
+    color: grey;
+}
+
+.love_answer {
+    color: #ff33cc;
+    font-size: 25;
+}
+
+.leave_answer {
+    color: #66ffff;
+    left-padding: 200px;
+    font-size: 25;
+}
+div#content {
+    background: black;
+    font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+    font-size: 1.08em;
+    font: white;
+}

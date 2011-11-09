@@ -1,4 +1,12 @@
-
 {{extend 'layout.html'}}
-<h1>This is the default/search.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+
+<link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
+<h3 class="search">Search Entries by ID or keyword<h3>
+
+<br />
+
+{{=form}}
+<br />
+<br />
+
+{{=target_div}}

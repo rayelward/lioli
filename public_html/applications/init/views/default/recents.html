@@ -1,35 +1,41 @@
 {{extend 'layout.html'}}
+
+<link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
 <UL>
 
 
         <form ><input type="hidden" name="id" id="id" value="" /></form>
 {{for row in rows:}}
-    <li>{{=row.unique_id}}
-        <br>
+    <li>
+    <span class="u_id">{{=row.unique_id}}</span>
+        <br><span class="body">
         {{=row.body}}
+        </span>
         <br>
-        Age: {{=row.age}} Gender: {{=row.gender}}
+        <span class="age_gender">Age: {{=row.age}} Gender: {{=row.gender}}</span>
         <br/>
-        
-        <span id="love_answer{{=row.id}}" style="display: none">Loves: <span id="love_row{{=row.id}}"> {{=row.loves}}</span></span>
+        <div class="vote_buttons">
+        <span class="love_answer"id="love_answer{{=row.id}}" style="display: none">Loves: <span id="love_row{{=row.id}}"> {{=row.loves}}</span></span>
         <span id="love_button{{=row.id}}">
-        <button onclick="jQuery('#id').val('{{=row.id}}');
+        <span onclick="jQuery('#id').val('{{=row.id}}');
                 ajax('add_loves', ['id'], 'love_row{{=row.id}}');
                 jQuery('#love_button{{=row.id}}').hide();
                 jQuery('#love_answer{{=row.id}}').show();
                 jQuery('#leave_button{{=row.id}}').hide();
                 jQuery('#leave_answer{{=row.id}}').show();
-                ">Love it</button></span>
+                "> <input type="image" src="{{=URL('static','love_button.png')}}"  class="vote_button" width="75px", height="31px")></input></span></span>
                 
-        <span id="leave_answer{{=row.id}}" style="display: none">Leaves: <span id="leave_row{{=row.id}}"> {{=row.leaves}}</span></span>
+        <span class="leave_answer" id="leave_answer{{=row.id}}" style="display: none">Leaves: <span id="leave_row{{=row.id}}"> {{=row.leaves}}</span></span>
         <span id="leave_button{{=row.id}}">
-        <button onclick="jQuery('#id').val('{{=row.id}}');
+        <span onclick="jQuery('#id').val('{{=row.id}}');
                 ajax('add_leaves', ['id'], 'leave_row{{=row.id}}');
                 jQuery('#love_button{{=row.id}}').hide();
                 jQuery('#love_answer{{=row.id}}').show();
                 jQuery('#leave_button{{=row.id}}').hide();
-                jQuery('#leave_answer{{=row.id}}').show();
-                ">Leave it</button></span>
+                jQuery('#leave_answer{{=row.id}}').show();"
+                > <input type="image" src="{{=URL('static','leave_button.png')}}"  class="vote_button" width="75px", height="31px")></input></span>    
+    </span>
+    </div>
     </li>
     <br>
     <br>
@@ -41,6 +47,6 @@
 <a href="{{=URL(args=[page-1])}}">previous</a>
 {{pass}}
 
-{{if rows >= items_per_page:}}
+{{if len(rows) >= items_per_page:}}
 <a href="{{=URL(args=[page+1])}}">next</a>
 {{pass}}
