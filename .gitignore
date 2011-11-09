@@ -3,3 +3,6 @@ public_html/applications/.DS_Store
 public_html/.DS_Store
 .DS_Store*
 *.DS_Store
+
+
+storage.sqlite
