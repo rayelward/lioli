@@ -20,7 +20,7 @@
     position:       relative;
 }
 .sf-navbar li li ul {
-    width:          40em;
+    width:          14em;
 }
 .sf-navbar li li li {
     width:          100%;

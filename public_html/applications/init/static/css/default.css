@@ -1,21 +1,35 @@
 .next {
     position:relative;
     left: 775px;
+}
+body, #header, #page, #content, #wrapper  {
+    background: black;
+}
+div#statusbar {
+    background: black;
+    border-top: 10px white solid;
     
 }
+body div.a2a_menu_inside {
+background: white;
+}
+.sf-menu a {
+    border-left: 0px solid black;
+    color: #ff33cc;
+    background-color: black;
+}
+.sf-menu li:hover {
+    visibility: none;
+}
 
-div{
+div.wrapper{
     background: black;
+    color: white;
     }
-body {
-    background: black;
-    }
-body div {
-    background: black;
+#content a{
+    color: #ff33cc;
 }
-#statusbar {
-    background: white;
-}
+    
 ul li {
 list-style-image: none;
 list-style-type: none;
@@ -38,6 +52,12 @@ button.vote_button {
     color: #ff33cc;
     font-size: 25;
 }
+.age_gender {
+    color: grey;
+}
+.u_id {
+    color: grey;
+    }
 
 .leave_answer {
     color: #66ffff;
@@ -49,5 +69,5 @@ button.vote_button {
     background: black;
     font-family: "Arial Rounded MT Bold", Arial, sans-serif;
     font-size: 1.08em;
-    font: white;
+    color: white;
 }
