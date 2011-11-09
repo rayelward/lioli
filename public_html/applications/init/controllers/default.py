@@ -19,7 +19,7 @@ fields = [db.lioli_main.id, db.lioli_main.unique_id, db.lioli_main.body, db.liol
 #Shows 10 submissions for a user to vote on.
 def recents():
     page = request.args(0) or 0
-    items_per_page = 10
+    items_per_page = 5
     page_min = int(page) * items_per_page
     page_max = page_min + items_per_page
     where_clause = (db.lioli_main.accepted == 1)

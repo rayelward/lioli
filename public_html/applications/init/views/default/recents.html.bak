@@ -33,7 +33,7 @@
                 jQuery('#love_answer{{=row.id}}').show();
                 jQuery('#leave_button{{=row.id}}').hide();
                 jQuery('#leave_answer{{=row.id}}').show();"
-                > <button class="vote_button">{{=IMG(_src=URL('static','leave_button.png'), _alt="Leave it", _width="75px", _height="31px")}}</button></span>    
+                > <input type="image" src="{{=URL('static','leave_button.png')}}"  class="vote_button" width="75px", height="31px")></input></span>    
     </span>
     </div>
     </li>
@@ -43,10 +43,12 @@
 </UL>
 
 <!--NEED TO ADD PAGINATION -->
+<div class="previous">
 {{if page:}}
 <a href="{{=URL(args=[page-1])}}">previous</a>
 {{pass}}
-
+</div>
+<div class="next">
 {{if len(rows) >= items_per_page:}}
 <a href="{{=URL(args=[page+1])}}">next</a>
-{{pass}}
+{{pass}}</div>

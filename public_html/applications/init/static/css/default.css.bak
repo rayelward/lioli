@@ -1,9 +1,21 @@
+.next {
+    position:relative;
+    left: 700px;
+    
+}
+
 div{
-    backgroud: black;
+    background: black;
     }
 body {
     background: black;
     }
+body div {
+    background: black;
+}
+#statusbar {
+    background: white;
+}
 ul li {
 list-style-image: none;
 list-style-type: none;
@@ -19,13 +31,9 @@ button.vote_button {
     font-size: 1.4em;
     color: white;
 }
-.age_gender {
+.age_gender .u_id {
     color: grey;
 }
-.u_id {
-    color: grey;
-}
-
 .love_answer {
     color: #ff33cc;
     font-size: 25;
@@ -33,10 +41,11 @@ button.vote_button {
 
 .leave_answer {
     color: #66ffff;
-    left-padding: 200px;
+    position: relative;
+    left: 20px;
     font-size: 25;
 }
-div#content {
+#content {
     background: black;
     font-family: "Arial Rounded MT Bold", Arial, sans-serif;
     font-size: 1.08em;
