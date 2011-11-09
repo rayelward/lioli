@@ -43,10 +43,12 @@
 </UL>
 
 <!--NEED TO ADD PAGINATION -->
+<span class="previous">
 {{if page:}}
 <a href="{{=URL(args=[page-1])}}">previous</a>
 {{pass}}
-
+</span>
+<span class="next">
 {{if len(rows) >= items_per_page:}}
 <a href="{{=URL(args=[page+1])}}">next</a>
-{{pass}}
+{{pass}}</span>
