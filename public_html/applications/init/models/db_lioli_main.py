@@ -15,7 +15,7 @@ db.define_table('lioli_main',
 #OUT:random number between 1 and 9999999999
 def rand_unique_id():
     import random
-    return random.randrange(1, 9999999999, 1)
+    return random.randrange(1, 2000000000, 1)
 
 ##checks if the randomly generated number is already in the database.
 ##it uses tail recursion if the random number is already in the database
