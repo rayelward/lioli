@@ -33,19 +33,18 @@ response.generic_patterns = ['*'] if request.is_local else []
 ## (more options discussed in gluon/tools.py)
 #########################################################################
 
-from gluon.tools import Auth
-##, Crud, Service, PluginManager, prettydate
+from gluon.tools import Auth, Crud, Service, PluginManager, prettydate
 auth = Auth(db, hmac_key=Auth.get_or_create_key()) 
-##crud, service, plugins = Crud(db), Service(), PluginManager()
+crud, service, plugins = Crud(db), Service(), PluginManager()
 
 ## create all tables needed by auth if not custom tables
 auth.define_tables() 
 
 ## configure email
-##mail=auth.settings.mailer
-##mail.settings.server = 'logging' or 'smtp.gmail.com:587'
-##mail.settings.sender = 'you@gmail.com'
-##mail.settings.login = 'username:password'
+mail=auth.settings.mailer
+mail.settings.server = 'logging' or 'smtp.gmail.com:587'
+mail.settings.sender = 'you@gmail.com'
+mail.settings.login = 'username:password'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -54,8 +53,8 @@ auth.settings.reset_password_requires_verification = True
 
 ## if you need to use OpenID, Facebook, MySpace, Twitter, Linkedin, etc.
 ## register with janrain.com, write your domain:api_key in private/janrain.key
-##from gluon.contrib.login_methods.rpx_account import use_janrain
-##use_janrain(auth,filename='private/janrain.key')
+from gluon.contrib.login_methods.rpx_account import use_janrain
+use_janrain(auth,filename='private/janrain.key')
 
 #########################################################################
 ## Define your tables below (or better in another model file) for example
