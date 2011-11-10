@@ -51,7 +51,6 @@ def show():
 
 ##gets user submissions and enters them into the database.
 def submit():
-    session.forget()
     message = 'Please input a submission'
     form = SQLFORM.factory(
         Field('body', 'text', requires=IS_NOT_EMPTY()),
