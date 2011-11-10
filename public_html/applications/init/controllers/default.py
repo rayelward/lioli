@@ -19,32 +19,28 @@ def index():
 fields = [db.lioli_main.id, db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
 #Shows 10 submissions for a user to vote on.
 def recents():
-    session.forget()
-    page = request.args(0) or 0
+    page = request.vars.page or 0
     items_per_page = 5
     page_min = int(page) * items_per_page
     page_max = page_min + items_per_page
     where_clause = (db.lioli_main.accepted == 1)
     rows = db(where_clause).select(limitby=(page_min, page_max), orderby=~db.lioli_main.id, *fields)
-    return dict(rows=rows, page=int(page), items_per_page=items_per_page)
+    return dict(rows=rows)
     
 #Shows a random set of 10 submissions for a user to vote on.
 def random():
-    session.forget()
     where_clause = (db.lioli_main.accepted == 1)
     rows = db(where_clause).select(limitby=(0, 10), orderby='<random>', *fields)
     return dict(rows=rows)
 
 ##uses ajax to bring up a search via keywords for people.
 def search():
-    session.forget()
     return dict(form=FORM(INPUT(_id='keyword', _name='keyword',
         _onkeyup="ajax('bg_find', ['keyword'], 'target');")),
         target_div=DIV(_id='target'))
         
 ##shows the searched for data in more detail
 def show():
-    session.forget()
     u_id = request.args(0) or redirect(URL('search'))
     row = db((db.lioli_main.accepted==1) & (db.lioli_main.unique_id==u_id)).select().first()
     return dict(row=row)
@@ -69,7 +65,6 @@ def about():
     
 ##function called by ajax to display search results
 def bg_find():
-    session.forget()
     pattern = '%' + request.vars.keyword.lower() + '%'
     where_clause = ((db.lioli_main.body.lower().like(pattern)) |(db.lioli_main.unique_id.like(pattern))) & (db.lioli_main.accepted==1)
     pages = db(where_clause).select(orderby=('<random>'), limitby=(0,10))
@@ -84,7 +79,6 @@ def bg_find():
 
 ##called by AJAX used for voting up by one 
 def add_loves():
-    session.forget()
     row = db(db.lioli_main.id == request.vars.id).select().first()
     new_loves = row.loves + 1
     row.update_record(loves=new_loves)
@@ -92,8 +86,7 @@ def add_loves():
     
 ##called by AJAX used for voting up by one
 def add_leaves():
-    session.forget()
-    row = db.lioli_main[request.vars.id]
+    row = db(db.lioli_main.id == request.vars.id).select().first()
     new_leaves = row.leaves + 1
     row.update_record(leaves=new_leaves)
     return str(new_leaves)

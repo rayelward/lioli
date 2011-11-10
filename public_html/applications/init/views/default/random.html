@@ -1,41 +1,7 @@
 {{extend 'layout.html'}}
 
 <link rel="stylesheet" href="{{=URL('static','css/default.css')}}">
-<UL>
 
 
-        <form ><input type="hidden" name="id" id="id" value="" /></form>
-{{for row in rows:}}
-    <li><span class="u_id">{{=row.unique_id}}</span>
-        <br><span class="body">
-        {{=row.body}}
-        </span>
-        <br>
-        <span class="age_gender">Age: {{=row.age}} Gender: {{=row.gender}}</span>
-        <br/>
-        <div class="vote_buttons">
-        <span class="love_answer"id="love_answer{{=row.id}}" style="display: none">Loves: <span id="love_row{{=row.id}}"> {{=row.loves}}</span></span>
-        <span id="love_button{{=row.id}}">
-        <span onclick="jQuery('#love_button{{=row.id}}').hide();
-                jQuery('#love_answer{{=row.id}}').show();
-                jQuery('#leave_button{{=row.id}}').hide();
-                jQuery('#leave_answer{{=row.id}}').show();
-                jQuery('#id').val('{{=row.id}}');
-                ajax('add_loves', ['id'], 'love_row{{=row.id}}');
-                "> <input type="image" src="{{=URL('static','love_button.png')}}"  class="vote_button" width="75px", height="31px"></input></span></span>
-                
-        <span class="leave_answer" id="leave_answer{{=row.id}}" style="display: none">Leaves: <span id="leave_row{{=row.id}}"> {{=row.leaves}}</span></span>
-        <span id="leave_button{{=row.id}}">
-        <span onclick="jQuery('#love_button{{=row.id}}').hide();
-                jQuery('#love_answer{{=row.id}}').show();
-                jQuery('#leave_button{{=row.id}}').hide();
-                jQuery('#leave_answer{{=row.id}}').show();
-                jQuery('#id').val('{{=row.id}}');
-                ajax('add_leaves', ['id'], 'leave_row{{=row.id}}');"
-                > <input type="image" src="{{=URL('static','leave_button.png')}}"  class="vote_button" width="75px", height="31px"></input></span> 
-    </div>
-    </li>
-    <br>
-    <br>
-    {{pass}}
-</UL>
+
+{{include 'sub_list.html'}}

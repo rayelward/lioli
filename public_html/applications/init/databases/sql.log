@@ -137,3 +137,11 @@ CREATE TABLE lioli_main(
     PRIMARY KEY(id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
 success!
+timestamp: 2011-11-10T02:53:23.711283
+ALTER TABLE auth_user DROP COLUMN registration_id;
+timestamp: 2011-11-10T02:57:28.560824
+ALTER TABLE auth_user DROP COLUMN registration_id;
+success!
+timestamp: 2011-11-10T11:32:07.009545
+ALTER TABLE auth_user ADD registration_id VARCHAR(255);
+success!
