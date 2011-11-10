@@ -12,12 +12,14 @@
 
 
 def index():
+    session.forget()
     redirect(URL('recents'))
     return dict()
     
 fields = [db.lioli_main.id, db.lioli_main.unique_id, db.lioli_main.body, db.lioli_main.loves, db.lioli_main.leaves, db.lioli_main.age, db.lioli_main.gender]
 #Shows 10 submissions for a user to vote on.
 def recents():
+    session.forget()
     page = request.args(0) or 0
     items_per_page = 5
     page_min = int(page) * items_per_page
@@ -28,24 +30,28 @@ def recents():
     
 #Shows a random set of 10 submissions for a user to vote on.
 def random():
+    session.forget()
     where_clause = (db.lioli_main.accepted == 1)
     rows = db(where_clause).select(limitby=(0, 10), orderby='<random>', *fields)
     return dict(rows=rows)
 
 ##uses ajax to bring up a search via keywords for people.
 def search():
+    session.forget()
     return dict(form=FORM(INPUT(_id='keyword', _name='keyword',
         _onkeyup="ajax('bg_find', ['keyword'], 'target');")),
         target_div=DIV(_id='target'))
         
 ##shows the searched for data in more detail
 def show():
+    session.forget()
     u_id = request.args(0) or redirect(URL('search'))
     row = db((db.lioli_main.accepted==1) & (db.lioli_main.unique_id==u_id)).select().first()
     return dict(row=row)
 
 ##gets user submissions and enters them into the database.
 def submit():
+    session.forget()
     message = 'Please input a submission'
     form = SQLFORM.factory(
         Field('body', 'text', requires=IS_NOT_EMPTY()),
@@ -53,12 +59,13 @@ def submit():
         Field('gender', requires = IS_IN_SET((('F', 'M'))), widget = SQLFORM.widgets.radio.widget))
     if form.process().accepted:
         unique_id = insert_into_my_db(form.vars.body, form.vars.age, form.vars.gender)
-        message = "Thank you for your submission.  Please refer to %s in the future to see how people have voted on it" % (unique_id)
-        response.flash = 'accepted'
+        message = "Thank you for your submission.  It is now awaiting moderator approval.  Please refer to %s in the future to see how people have voted on it" % (unique_id)
+        response.flash = 'Thank you.'
     return dict(form=form, message=message)
     
 ##leads to default/about.html which gives a description of the application:
 def about():
+    session.forget()
     return dict()
     
 ##function called by ajax to display search results
