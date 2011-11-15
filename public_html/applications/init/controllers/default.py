@@ -21,11 +21,12 @@ fields = [db.lioli_main.id, db.lioli_main.unique_id, db.lioli_main.body, db.liol
 def recents():
     page = request.vars.page or 0
     items_per_page = 5
+    total_pages = db(db.lioli_main.accepted == 1).count() / 5
     page_min = int(page) * items_per_page
     page_max = page_min + items_per_page
     where_clause = (db.lioli_main.accepted == 1)
     rows = db(where_clause).select(limitby=(page_min, page_max), orderby=~db.lioli_main.id, *fields)
-    return dict(rows=rows)
+    return dict(rows=rows, total_pages=total_pages)
     
 #Shows a random set of 10 submissions for a user to vote on.
 def random():
