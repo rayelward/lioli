@@ -5,7 +5,6 @@ def index():
     """
     Forwards an index request to the recents page.
     """
-    session.forget()
     redirect(URL('recents'))
     return dict()
     
@@ -17,7 +16,7 @@ def recents():
     """
     page = request.vars.page or 0
     items_per_page = 5
-    total_pages = db(db.lioli_main.accepted == 1).count() / 5
+    total_pages = db(db.lioli_main.accepted == 1).count() / items_per_page
     page_min = int(page) * items_per_page
     page_max = page_min + items_per_page
     where_clause = (db.lioli_main.accepted == 1)
@@ -67,7 +66,6 @@ def about():
     """
     leads to default/about.html which gives a description of the application:
     """
-    session.forget()
     return dict()
     
 def bg_find():
@@ -97,7 +95,7 @@ def add_loves():
     
 def add_leaves():
     """
-    called by AJAX used for voting up by one
+    called by AJAX used for voting down by one
     """
     row = db(db.lioli_main.id == request.vars.id).select().first()
     new_leaves = row.leaves + 1
