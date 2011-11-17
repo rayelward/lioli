@@ -1,2 +1,9 @@
 User-agent: *
-Disallow: /welcome/default/user
+Allow: /recents
+Allow: /about
+Allow: /submit
+Disallow: /admin/
+Allow: /random
+Allow: /search
+Allow: /
+Disallow: /moderation/
