@@ -2,6 +2,11 @@
     position:relative;
     left: 775px;
 }
+
+#wrapper {
+    width: 800px;
+}
+
 body, #header, #page, #content, #wrapper  {
     background: black;
 }
