@@ -7,6 +7,7 @@ default_function = 'recents'
 
 
 routes_in = (
+             ('/robots.txt', '/init/static/robots.txt'),
              ('/favicon.ico', '/init/static/favicon.ico'),
              ('/recents/$p', '/init/default/recents/$p'),
              ('/show/$p', '/init/default/show/$p'),
