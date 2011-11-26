@@ -14,10 +14,10 @@ def rand_unique_id():
     this is needed for the buildin python random number generator
     gets a random 10 digit number for us.
     IN:n/a
-    OUT:random number between 1 and 2000000000
+    OUT:random number between 1 and 2147483646
     """
     import random
-    return random.randrange(1, 2000000000, 1)
+    return random.randrange(1, 2147483646, 1)
 
 def get_new_unique_id():
     """
