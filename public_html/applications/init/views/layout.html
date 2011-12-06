@@ -119,9 +119,21 @@
         jQuery('ul.sf-menu').superfish();});
       </script>
 
-      <!-- AddToAny BEGIN -->
-      <div style="padding: 7px; float:right;" class="a2a_kit a2a_default_style"><a class="a2a_dd" href="http://www.addtoany.com/share_save">Share</a></div><script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
-      <!-- AddToAny END -->
+      <!-- AddToAny BEGIN
+      <div style="padding: 7px; float:right;" class="a2a_kit a2a_default_style">
+      <a class="a2a_dd" href="http://www.addtoany.com/share_save">Share</a>
+      </div>
+      <script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+       AddToAny END -->
+      <a class="a2a_dd" style="padding: 7px; float:right;" href="http://www.addtoany.com/share_save">
+    <img src="http://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share"/>
+</a>
+
+    <script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+
+      
+      
+      
 
       <div style="clear: both;"></div><!-- Clear the divs -->   
       {{end}}               
@@ -139,6 +151,7 @@
 
       <!-- content -->
       <div id="content" {{=XML(style_content)}} >
+              <div id="ad" style="float : right"><a href="http://itunes.apple.com/us/app/love-it-or-leave-it!/id436692112?ls=1&mt=8"><img style="border : 1px solid white" src="{{=URL('static','side_banner6.png')}}" width="150px" /></a></div>
         {{include}} 
       </div>
       <!-- content -->
